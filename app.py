@@ -13,22 +13,24 @@ CORS(app)  # Enable CORS for all routes
 
 model = load_model('Deepfake2d.h5')
 
-def extract_frames_rand(video_path, num_frames_to_select):
+def extract_frames(video_path, interval_seconds):
     capture = cv2.VideoCapture(video_path)
-    total_frames = int(capture.get(cv2.CAP_PROP_FRAME_COUNT))
+    frame_rate = capture.get(cv2.CAP_PROP_FPS)
+    interval_frames = int(frame_rate * interval_seconds)
 
-    # Randomly select frames
-    selected_frame_indices = random.sample(range(total_frames), num_frames_to_select)
-    selected_frames = []
-
-    for frame_idx in selected_frame_indices:
-        capture.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
+    frames = []
+    frame_idx = 0
+    while True:
         ret, frame = capture.read()
-        if ret:
-            selected_frames.append(frame)
+        if not ret:
+            break
+        if frame_idx % interval_frames == 0:
+            frames.append(frame)
+        frame_idx += 1
 
     capture.release()
-    return selected_frames
+    return frames
+
 def extract_face(frame):
     detector = MTCNN()
     faces = detector.detect_faces(frame)
@@ -39,10 +41,10 @@ def extract_face(frame):
     else:
         return None
     
-def predict_from_video(video_path,num_frame=3):
+def predict_from_video(video_path,time_interval=3):
     if not os.path.exists(video_path):
         return "Video Not Found"
-    frames = extract_frames_rand(video_path, num_frame)
+    frames = extract_frames(video_path, time_interval)
     faces = [extract_face(frame) for frame in frames]
     faces = [face for face in faces if face is not None]
     if len(faces) == 0:
