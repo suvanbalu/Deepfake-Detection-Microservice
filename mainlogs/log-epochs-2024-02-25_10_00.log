@@ -1,0 +1,15 @@
+2024-02-25 10:01:00,394 - INFO - Training model for 4000 fake and 1201 real faces of epochs 50
+2024-02-25 10:01:05,067 - INFO - Loaded 5201 images and 5201 labels.
+2024-02-25 10:01:06,459 - INFO - Preprocessed images.
+2024-02-25 10:01:07,237 - INFO - REgularization term of 0.001 added
+2024-02-25 11:30:26,555 - INFO - Model trained.
+2024-02-25 11:30:35,869 - INFO - Model Evaluation for 4000 fake and 1201 real faces:
+2024-02-25 11:30:35,870 - INFO - Test Loss: 0.3442372977733612
+2024-02-25 11:30:35,871 - INFO - Test Accuracy: 0.8590646982192993
+2024-02-25 11:30:45,163 - INFO - Before Cleaning GPU /physical_device:GPU:0, memory usage: 959 / 16384 MB
+2024-02-25 11:30:45,165 - INFO - init
+2024-02-25 11:30:45,168 - INFO - reset context of device 0
+2024-02-25 11:30:45,511 - INFO - GPU /physical_device:GPU:0, memory usage: 16137 / 16384 MB
+2024-02-25 12:53:22,251 - INFO - Training model for 400 fake and 1201 real faces of epochs 5
+2024-02-25 12:53:23,727 - INFO - Loaded 1601 images and 1601 labels.
+2024-02-25 12:53:24,188 - INFO - Preprocessed images.

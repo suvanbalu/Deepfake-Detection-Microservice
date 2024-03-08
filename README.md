@@ -35,7 +35,7 @@ The MTCNN (Multi-Task Cascaded Convolutional Networks) algorithm is used for fac
 
 ### Model Training
 
-Various experiments were conducted during the model training phase to ensure optimal performance. The chosen model, trained with the specified dataset and parameters, demonstrates effectiveness in detecting deepfake content. ()
+Various experiments were conducted during the model training phase to ensure optimal performance. The chosen model, trained with the specified dataset and parameters, demonstrates effectiveness in detecting deepfake content. 
 
 ## Stats
 

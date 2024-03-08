@@ -1,0 +1,14 @@
+2024-02-22 07:28:32,970 - INFO - Training model for 5000 fake and 1201 real faces.
+2024-02-22 07:28:39,472 - INFO - Loaded 6201 images and 6201 labels.
+2024-02-22 07:28:41,107 - INFO - Preprocessed images.
+2024-02-22 07:32:59,251 - INFO - Training model for 5000 fake and 1201 real faces.
+2024-02-22 07:33:05,076 - INFO - Loaded 6201 images and 6201 labels.
+2024-02-22 07:33:06,755 - INFO - Preprocessed images.
+2024-02-22 08:37:52,553 - INFO - Model trained.
+2024-02-22 08:38:03,428 - INFO - Model Evaluation for 5000 fake and 1201 real faces:
+2024-02-22 08:38:03,429 - INFO - Test Loss: 0.26821696758270264
+2024-02-22 08:38:03,429 - INFO - Test Accuracy: 0.902740478515625
+2024-02-22 09:04:56,578 - INFO - GPU /physical_device:GPU:0, memory usage: 1471 / 16384 MB
+2024-02-22 09:06:56,610 - INFO - Training model for 6000 fake and 1201 real faces.
+2024-02-22 09:07:03,976 - INFO - Loaded 7201 images and 7201 labels.
+2024-02-22 09:07:05,893 - INFO - Preprocessed images.
