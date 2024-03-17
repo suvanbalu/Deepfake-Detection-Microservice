@@ -1,0 +1,15 @@
+{
+  "media_type": "video",
+  "dataset_dir": ["sample_dataset"],
+  "output_dir": ["data-faces-margin10"],
+  "extract_method": "uniform",
+  "interval_seconds": 5,
+  "num_frames_to_select": 0,
+  "face_detection": {
+    "method": "SSD",
+    "margin": 10
+  },
+  "resize": 0,
+  "meta_flag": true,
+  "metadata_type": "csv"
+}

@@ -1,6 +1,0 @@
-Flask
-flask-cors
-opencv-python
-numpy
-tensorflow
-mtcnn

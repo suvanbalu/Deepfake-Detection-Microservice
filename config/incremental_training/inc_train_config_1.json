@@ -1,0 +1,27 @@
+{
+  "model_path": "models/detection_models/Deepfake2d.h5",
+  "data_dir": "data/faces",
+  "real_limit": -1,
+  "fake_limit": -1,
+  "partition": {
+    "flag": false
+  },
+  "val_split": 0.2,
+  "model": {
+    "epochs": 10,
+    "batch_size": 1,
+    "learning_rate": 0.001,
+    "decay": 0.9,
+    "optimizer": "adam",
+    "loss": "binary_crossentropy",
+    "metrics": ["accuracy"],
+    "output_path": "trained_model.h5"
+  },
+  "plot": {
+    "new_folder_flag": true,
+    "flag": true,
+    "output_dir": "plots",
+    "types": ["loss", "accuracy"],
+    "title": "Incremental Training Trial 1 Results"
+  }
+}

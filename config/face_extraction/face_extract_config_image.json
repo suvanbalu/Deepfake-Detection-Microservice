@@ -1,0 +1,11 @@
+{
+  "media_type": "image",
+  "dataset_dir": ["../faces/FAKE","../faces/REAL"],
+  "output_dir": ["faces/FAKE","faces/REAL"],
+  "face_detection": {
+    "method": "MTCNN",
+    "margin": 0
+  },
+  "resize": 0,
+  "meta_flag": false
+}

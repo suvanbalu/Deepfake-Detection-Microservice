@@ -1,0 +1,13 @@
+{
+  "dataset_dir": ["../dfdc_train_part_13/dfdc_train_part_13"],
+  "output_dir": ["../data-faces"],
+  "extract_method": "uniform",
+  "interval_seconds": 5,
+  "num_frames_to_select": 0,
+  "face_detection": {
+    "method": "MTCNN",
+    "margin": 0
+  },
+  "resize": 0,
+  "metadata_type": "json"
+}
