@@ -1,4 +1,8 @@
 sample_dataset
-logs
+logs/*/
 data 
 test
+faces
+faces2
+faces3
+faces4

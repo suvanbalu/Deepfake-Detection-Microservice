@@ -41,7 +41,24 @@ def compile_model(model, config):
     except KeyError as e:
         logging.error(f"Missing key in config: {e}")
         raise
+    
+def enable_gpu(memory=14):
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    if gpus:
+        try:
+            # Set GPU memory growth
+            for gpu in gpus:
+                tf.config.experimental.set_memory_growth(gpu, True)
 
+            # Set GPU memory limit to 14 GB
+            tf.config.experimental.set_virtual_device_configuration(
+                gpus[0],
+                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory*1024)]
+            )
+            logging.info("GPU enabled of memory GB : ",memory)
+            tf.config.run_functions_eagerly(True)
+        except RuntimeError as e:
+            logging.error(f"Error enabling GPU: {e}")
 
 def create_callbacks(config):
     lr = config['model']['learning_rate']
@@ -110,6 +127,8 @@ def main(config_path, log_dir="logs/incremental_training"):
         real_limit = config['real_limit']
         fake_limit = config['fake_limit']
         resize = config.get('resize', 0)
+        gpu_mem = config.get("gpu_mem", 14)
+        
         if resize!=0:
             resize=(resize,resize)
         data_augmentation = config['data_augmentation']['flag']
