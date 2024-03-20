@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from logs.enablelogging import setup_logging, close_logging
 from load_dataset import load_data, n_partition_data, load_paths, split_data
 from plots import plot_loss, plot_accuracy, plot_confusion_matrix, plot_roc_curve
-
+from tensorflow.keras import layers
 
 def load_config(config_path):
     try:
@@ -25,8 +25,8 @@ def load_config(config_path):
         exit(1)
 
 
-def freeze_base_layers(model):
-    for layer in model.layers:
+def freeze_base_layers(model,num=0):
+    for layer in model.layers[:-num]:
         layer.trainable = False
     return model
 
@@ -36,6 +36,7 @@ def compile_model(model, config):
         optimizer = config['model']['optimizer']
         loss = config['model']['loss']
         metrics = config['model']['metrics']
+    
         model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
         return model
     except KeyError as e:
@@ -125,12 +126,10 @@ def main(config_path, log_dir="logs/incremental_training"):
         real_dir = Path(data_dir) / 'REAL'
         fake_dir = Path(data_dir) / 'FAKE'
         real_limit = config['real_limit']
-        fake_limit = config['fake_limit']
-        resize = config.get('resize', 0)
+        fake_limit_scale = config['fake_limit_scale']
+        resize = config.get('resize', 224)
         gpu_mem = config.get("gpu_mem", 14)
         
-        if resize!=0:
-            resize=(resize,resize)
         data_augmentation = config['data_augmentation']['flag']
         data_augmentation_ratio = config['data_augmentation']['ratio']
         partition_flag = config['partition']['flag']
@@ -148,15 +147,15 @@ def main(config_path, log_dir="logs/incremental_training"):
             logging.info(f"Partitioned data into {n} parts, using part {p}")
         else:
             if data_augmentation:
-                X, y = load_data(real_dir, fake_dir, real_limit, fake_limit, data_augmentation, resize=resize)
+                X, y = load_data(real_dir, fake_dir, real_limit, fake_limit_scale, data_augmentation, resize=resize)
             else:   
-                X, y = load_data(real_dir, fake_dir ,real_limit,fake_limit, resize=resize)
+                X, y = load_data(real_dir, fake_dir ,real_limit,fake_limit_scale, resize=resize)
         
         val_split = config['val_split']
         X_train, X_val, y_train, y_val = split_data(X, y, val_split)
         logging.info(f"Split data into training and validation sets with {len(X_train)} and {len(X_val)} samples respectively")
         model = load_model(model_path)
-        model = freeze_base_layers(model)
+        model = freeze_base_layers(model,4)
         logging.info("Model loaded and base layers frozen")
         model = compile_model(model, config)
         history,model = train_model(model, X_train, y_train, X_val, y_val, config)
@@ -180,5 +179,13 @@ def main(config_path, log_dir="logs/incremental_training"):
         close_logging()
 
 
+
 if __name__ == "__main__":
-    main("config\incremental_training\inc_train_config.json")
+    if len(sys.argv) > 1:
+        config_path = sys.argv[1]
+        if len(sys.argv)>2:
+            log_dir = sys.argv[2]
+    else:
+        config_path = "config/incremental_training/linux_inc_train.json"
+        log_dir = "logs/incremental_training" 
+    main(config_path,log_dir)

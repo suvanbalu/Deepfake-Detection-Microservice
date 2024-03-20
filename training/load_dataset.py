@@ -49,31 +49,39 @@ def n_partition_data(real_dir,fake_dir,n,p,real_scale,fake_to_real_ratio,format=
     return np.array(images), np.array(labels)
     
 
-def load_data(real_dir,fake_dir, real_limit, fake_limit,augmentation=False, augment_ratio=0.5,resize=0):
+def load_data(real_dir,fake_dir, real_limit, fake_limit_scale,augmentation=False, augment_ratio=0.5,resize=224):
     images = []
     labels = []
     
     real_files = get_files(real_dir, "jpg", real_limit)
-    fake_files = get_files(fake_dir, "jpg", fake_limit)
-    
+    if fake_limit_scale>0:
+        fake_files = get_files(fake_dir, "jpg", -1)[:int(fake_limit_scale*len(real_files))]
+    else:
+        fake_files = get_files(fake_dir, "jpg", -1)
+
     for file in real_files:
         img = cv2.imread(file)
-        if resize!=0:
+        if resize!=224:
             img = cv2.resize(img, (resize, resize))
         images.append(img)
         labels.append(0)
     
     for file in fake_files:
         img = cv2.imread(file)
-        if resize!=0:
+        if resize!=224:
             img = cv2.resize(img, (resize, resize))
         images.append(img)
         labels.append(1)
-    
+    if resize!=224:
+        logging.info(f"Images resized to {resize}x{resize} pixels")
+
+    logging.info(f"Loaded {len(images)} images and {len(labels)} labels")
     if augmentation:
+        logging.info(f"Applying data augmentation with ratio {augment_ratio}")
         aug_images, aug_labels = data_augmentation(images,labels,augment_ratio)
         images.extend(aug_images)
         labels.extend(aug_labels)
+        logging.info(f"Size after augmentation: {len(images)}")
         
     return np.array(images), np.array(labels)
 

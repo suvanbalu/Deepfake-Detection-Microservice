@@ -2,7 +2,7 @@
   "model_path": "models/detection_models/Deepfake2d.h5",
   "data_dir": "data/faces",
   "real_limit": -1,
-  "fake_limit": -1,
+  "fake_limit_scale": -1,
   "partition": {
     "flag": false
   },
