@@ -11,7 +11,7 @@ from logs.enablelogging import setup_logging, close_logging
 from load_dataset import load_data, n_partition_data,split_data
 from plots import plot_loss, plot_accuracy, plot_confusion_matrix, plot_roc_curve
 
-from utils import load_config,compile_model,enable_gpu, save_model, plot_results
+from utils import load_config,compile_model,enable_gpu, train_model,save_model, plot_results
 
 def freeze_base_layers(model,num=0):
     for layer in model.layers[:-num]:
@@ -25,7 +25,6 @@ def main(config_path, log_dir="logs/incremental_training"):
         print("Error setting up logging: ", e)
         exit(1)
     try:
-        enable_gpu()
         config = load_config(config_path)
         logging.info(f"Using configuration: {config}")
         model_path = config['model_path']
@@ -36,7 +35,8 @@ def main(config_path, log_dir="logs/incremental_training"):
         fake_limit_scale = config['fake_limit_scale']
         resize = config.get('resize', 224)
         gpu_mem = config.get("gpu_mem", 14)
-        
+        enable_gpu(gpu_mem)
+
         data_augmentation = config['data_augmentation']['flag']
         data_augmentation_ratio = config['data_augmentation']['ratio']
         partition_flag = config['partition']['flag']

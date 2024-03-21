@@ -12,7 +12,7 @@ from plots import plot_loss, plot_accuracy, plot_confusion_matrix, plot_roc_curv
 from tensorflow.keras import layers
 from tensorflow.keras import regularizers
 
-from utils import load_config,compile_model,enable_gpu, create_callbacks, save_model, plot_results
+from utils import load_config,compile_model,enable_gpu, train_model,create_callbacks, save_model, plot_results
 
 def load_efficeintnet_model(efficientnet_variant):
   if efficientnet_variant == "b0":
@@ -79,7 +79,6 @@ def main(config_path, log_dir="logs/model_training"):
     print("Error setting up logging: ", e)
     exit(1)
   try:
-    enable_gpu()
     config = load_config(config_path)
     logging.info(f"Using configuration: {config}")
     efficientnet_variant = config['efficientnet_variant']
@@ -94,7 +93,7 @@ def main(config_path, log_dir="logs/model_training"):
     partition_flag = config['partition']['flag']
 
     gpu_mem = config.get("gpu_mem", 14)
-
+    enable_gpu(gpu_mem)
     if partition_flag:
       n = config['partition']['n']
       p = config['partition']['p']
