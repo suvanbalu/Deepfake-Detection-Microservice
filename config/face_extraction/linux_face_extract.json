@@ -1,0 +1,14 @@
+{
+    "dataset_dir": ["../deepfake-detection/dfdc_train_part_49","../deepfake-detection/dfdc_train_part_35"],
+    "output_dir": ["faces49","faces35"],
+    "extract_method": "uniform",
+    "interval_seconds": 5,
+    "num_frames_to_select": 0,
+    "face_detection": {
+      "method": "MTCNN",
+      "margin": 0
+    },
+    "media_type":"video",
+    "resize": 224,
+    "metadata_type": "json"
+  }

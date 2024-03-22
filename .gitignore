@@ -2,10 +2,12 @@ sample_dataset
 logs/*/
 data 
 test
-faces
-faces2
-faces3
-faces4
+faces00
+faces25
+faces35
+faces49
+faces13
+faces15
 __pycache__
 /*.h5
 layer_visualize
