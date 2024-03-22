@@ -165,7 +165,7 @@ def process_video(video_path, output_dir, config):
     filename = os.path.basename(video_path)
     logging.info(f"Processing video: {filename}")
     try:
-        meta_flag = config.get('metadata',False)
+        meta_flag=config.get("meta_flag",True)
         if meta_flag:
             metadata = load_metadata(dir,metadata_type=config['metadata_type'])
             label = metadata[filename]
@@ -211,7 +211,7 @@ def main(config_path, log_dir="logs/face_extract"):
             output_dirs = [output_dirs[0] for _ in range(len(dataset_dirs))]
         if config["media_type"]=="video":
             for dataset_dir, output_dir in zip(dataset_dirs, output_dirs):
-                if config["meta_flag"]:
+                if config.get("meta_flag",True):
                     os.makedirs(os.path.join(output_dir,"REAL"), exist_ok=True)
                     os.makedirs(os.path.join(output_dir,"FAKE"), exist_ok=True)
                 else:
@@ -221,7 +221,7 @@ def main(config_path, log_dir="logs/face_extract"):
                     process_video(video, output_dir, config)
         elif config["media_type"]=="image":
             for dataset_dir, output_dir in zip(dataset_dirs, output_dirs):
-                if config["meta_flag"]:
+                if config.get("meta_flag",True):
                     os.makedirs(os.path.join(output_dir,"REAL"), exist_ok=True)
                     os.makedirs(os.path.join(output_dir,"FAKE"), exist_ok=True)
                 else:
@@ -238,4 +238,4 @@ def main(config_path, log_dir="logs/face_extract"):
         close_logging()
 
 if __name__ == "__main__":
-    main(r"config\face_extraction\face_extract_config_1.json")
+    main(r"config/face_extraction/linux_face_extract.json")

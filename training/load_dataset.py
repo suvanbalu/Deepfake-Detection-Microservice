@@ -65,6 +65,8 @@ def load_data(real_dir,fake_dir, real_limit, fake_limit_scale,augmentation=False
             img = cv2.resize(img, (resize, resize))
         images.append(img)
         labels.append(0)
+    rl=len(images)
+    logging.info(f"{rl} number of real images processed")
     
     for file in fake_files:
         img = cv2.imread(file)
@@ -72,6 +74,9 @@ def load_data(real_dir,fake_dir, real_limit, fake_limit_scale,augmentation=False
             img = cv2.resize(img, (resize, resize))
         images.append(img)
         labels.append(1)
+    fl = len(images)
+    logging.info(f"{fl-rl} number of fake images processed")
+
     if resize!=224:
         logging.info(f"Images resized to {resize}x{resize} pixels")
 
