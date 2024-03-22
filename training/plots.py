@@ -18,7 +18,8 @@ def plot_loss(history,output_dir,title):
   plt.legend()
   plt.title(title)
   plt.savefig(os.path.join(output_dir,filename))
-  logging.info(f"Final loss: {history.history['loss'][-1]} and Final Val loss: {history.history['val_loss'][-1]}")
+  logging.info(f"Final Train loss: {history.history['loss'][-1]}")
+  logging.info(f"Final Val loss: {history.history['val_loss'][-1]}")
   plt.close()
 
 def plot_accuracy(history,output_dir,title):
@@ -32,7 +33,8 @@ def plot_accuracy(history,output_dir,title):
   plt.legend()
   plt.title(title)
   plt.savefig(os.path.join(output_dir,filename))
-  logging.info(f"Final accuracy: {history.history['accuracy'][-1]} and Final Val accuracy: {history.history['val_accuracy'][-1]}")
+  logging.info(f"Final Train accuracy: {history.history['accuracy'][-1]}")
+  logging.info(f"Final Val accuracy: {history.history['val_accuracy'][-1]}")
   plt.close()
   
   
