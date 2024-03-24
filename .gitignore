@@ -2,12 +2,7 @@ sample_dataset
 logs/*/
 data 
 test
-faces00
-faces25
-faces35
-faces49
-faces13
-faces15
+dataset
 combined_faces
 __pycache__
 /*.h5

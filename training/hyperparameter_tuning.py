@@ -31,7 +31,7 @@ for lr, batch_size, reg, optimizer in hyperparameter_combinations:
     close_logging()
 
     config = {
-        "efficientnet_variant": "b5",
+        "efficientnet_variant": "b0",
         "data_dir": "combined_faces",
         "data_augmentation": {"flag": True, "ratio": 0.5},
         "real_limit": 2000,

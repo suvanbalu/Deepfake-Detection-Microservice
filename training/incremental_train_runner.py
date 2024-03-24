@@ -56,7 +56,7 @@ def run_training(training_script, config, log_dir):
         # Optionally, you can choose to keep or remove the config file after training
         os.remove(tmpfile_path)
 
-data_directories = ["faces49", "faces25", "faces35"] 
+data_directories = list(map(lambda x : os.path.join("dataset",x),os.listdir("dataset")))
 log_dir = "logs/model_training/30epochs-b5" 
 training_script = "training/incremental_training.py"  
 

@@ -1,6 +1,6 @@
 {
   "efficientnet_variant": "b2",
-  "data_dir": "faces00",
+  "data_dir": "dataset/faces00",
   "data_augmentation":{
     "flag": true,
     "ratio": 0.5
