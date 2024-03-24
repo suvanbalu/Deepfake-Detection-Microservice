@@ -1,4 +1,4 @@
-"Log_file, Efficientnet",Batch Size,Reg. Lambda,Optimizer,Data Size,Data Size after augmentation,Resize,Train Loss,Test Loss,Train Accuracy,Test Accuracy,Time Taken
+Log_file,Efficientnet,Batch Size,Reg. Lambda,Optimizer,Data Size,Data Size after augmentation,Resize,Train Loss,Test Loss,Train Accuracy,Test Accuracy,Time Taken
 Hyperparameter-Result31,b4,32,0.01,sgd,5000,7500,320x320,0.5004298686981201,0.5324480533599854,0.7990000247955322,0.7773333191871643,13.56
 Hyperparameter-Result37,b4,16,0.01,sgd,5000,7500,320x320,1.1257383823394775,1.1263682842254639,0.7360000014305115,0.7319999933242798,14.42
 Hyperparameter-Result29,b4,8,N/A,sgd,5000,7500,320x320,0.3130929172039032,0.4170787036418915,0.8641666769981384,0.8100000023841858,18.01
