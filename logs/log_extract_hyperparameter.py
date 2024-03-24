@@ -68,7 +68,7 @@ def parse_log_file(log_file_path):
         ]
 
 # Specify the directory containing the log files
-log_dir = "logs/hyperparameter_tuning-b4-success"
+log_dir = "logs/hyperparameter_tuning-b5-success"
 # Update the log_files list comprehension to include a regex match for the expected file name format
 log_files = [
     os.path.join(log_dir, f) for f in os.listdir(log_dir)
