@@ -43,7 +43,7 @@ def enable_gpu(memory=14):
           [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory*1024)]
       )
       logging.info(f"GPU enabled of memory GB : {memory}")
-      tf.config.run_functions_eagerly(True)
+      # tf.config.run_functions_eagerly(True)
     except RuntimeError as e:
       logging.error(f"Error enabling GPU: {e}")
     

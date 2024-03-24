@@ -12,3 +12,4 @@ combined_faces
 __pycache__
 /*.h5
 layer_visualize
+plots

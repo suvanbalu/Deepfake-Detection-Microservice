@@ -3,13 +3,14 @@ import json
 import tempfile
 import os
 import sys
+import tensorflow as tf
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from logs.enablelogging import setup_logging, close_logging
 import logging
 
 # Define hyperparameters to test
-learning_rates = [0.001, 0.0001,0.1,0.01]
-batch_sizes = [64,32,16,8]
+learning_rates = [0.001,0.1,0.01]
+batch_sizes = [16,8,32]
 regularizations = [
     {"flag": True, "type": "l2", "lambda": 0.001},
     {"flag": True, "type": "l2", "lambda": 0.01},
@@ -17,23 +18,23 @@ regularizations = [
     {"flag": True, "type": "l2", "lambda": 0},
 ]
 optimizers = ["adam", "sgd"]
-efficientnet_variants = ["b0", "b1", "b2", "b3", "b4", "b5","b6","b7"]
+# efficientnet_variants = ["b7", "b5","b6","b4","b2", "b3", "b1","b0"]
 
 # Generate all combinations of hyperparameters
 from itertools import product
-hyperparameter_combinations = list(product(learning_rates, batch_sizes, regularizations, optimizers,efficientnet_variants))
+hyperparameter_combinations = list(product(learning_rates, batch_sizes, regularizations, optimizers))
 i=0
-for lr, batch_size, reg, optimizer,effnet_variant in hyperparameter_combinations:
+for lr, batch_size, reg, optimizer in hyperparameter_combinations:
     # Update base configuration with the new set of hyperparameters
     setup_logging("logs/hyperparameter_tuning",f"Hyperparameter-Driver{i}")
-    logging.info(f"Running training with LR={lr}, Batch Size={batch_size}, Reg={reg['type']}={reg['lambda']}, Optimizer={optimizer}, Effnet={effnet_variant}")
+    logging.info(f"Running training with LR={lr}, Batch Size={batch_size}, Reg={reg['type']}={reg['lambda']}, Optimizer={optimizer}")
     close_logging()
-    i+=1
+
     config = {
-        "efficientnet_variant": effnet_variant,
+        "efficientnet_variant": "b5",
         "data_dir": "combined_faces",
         "data_augmentation": {"flag": True, "ratio": 0.5},
-        "real_limit": 2500,
+        "real_limit": 2000,
         "fake_limit_scale": 1.5,
         "partition": {"flag": False, "n": 1, "p": 1, "real_limit_scale": -1, "fake_to_real_ratio": 1, "format": "jpg"},
         "gpu_mem": 14.5,
@@ -59,7 +60,7 @@ for lr, batch_size, reg, optimizer,effnet_variant in hyperparameter_combinations
             "output_dir": "plots/hyperparameter_tuning",
             "new_folder_flag": True,
             "types": ["loss", "accuracy"],
-            "title": f"LR={lr}_BS={batch_size}_{reg['type'].upper()}={reg['lambda']}_OPT={optimizer}_Effnet={effnet_variant}"
+            "title": f"LR={lr}_BS={batch_size}_{reg['type'].upper()}={reg['lambda']}_OPT={optimizer}"
         }
     }
 
@@ -70,10 +71,15 @@ for lr, batch_size, reg, optimizer,effnet_variant in hyperparameter_combinations
 
     # Run the training script with the updated config
     try:
-        subprocess.run(['python3', 'training/model_training.py', tmpfile_path,r"logs/hyperparameter_tuning"], check=True)
+        subprocess.run(['python3', 'training/model_training.py', tmpfile_path,r"logs/hyperparameter_tuning",f"Hyperparameter-Result{i}"], check=True)
+        tf.keras.backend.clear_session()
     except subprocess.CalledProcessError as e:
         print(f"Training failed with config: LR={lr}, Batch Size={batch_size}, Reg={reg['type']}={reg['lambda']}, Optimizer={optimizer}")
-        print(e)
+        setup_logging("logs/hyperparameter_tuning",f"Hyperparameter-Driver-Error{i-1}")
+        logging.error(e)
+        close_logging()
+        tf.keras.backend.clear_session()
     finally:
         # Clean up the temporary file
         os.remove(tmpfile_path)
+        i+=1

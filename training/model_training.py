@@ -62,7 +62,7 @@ def build_model(base_model, config):
     return model     
 
 
-def main(config_path, log_dir="logs/model_training"):
+def main(config_path, log_dir="logs/model_training",log_name=None):
   model_resize = {
       "b0": 224,
       "b1": 240,
@@ -74,7 +74,7 @@ def main(config_path, log_dir="logs/model_training"):
       "b7": 520
   }
   try:
-    setup_logging(log_dir)
+    setup_logging(log_dir,log_name)
   except Exception as e:
     print("Error setting up logging: ", e)
     exit(1)
@@ -135,7 +135,8 @@ def main(config_path, log_dir="logs/model_training"):
       plot_title = config["plot"]["title"]
       plot_results(history, output_dir, plot_title, plot_types, new_folder_flag, plot_dict={"loss": plot_loss, "accuracy": plot_accuracy})
       # Add other plot functions to the dictionary as needed
-
+    tf.keras.backend.clear_session()
+    tf.compat.v1.reset_default_graph() 
     logging.info("Model training complete")
   except Exception as e:
     logging.error(f"An error occurred: {e}")
@@ -145,11 +146,15 @@ def main(config_path, log_dir="logs/model_training"):
 
 
 if __name__ == "__main__":
+  
   if len(sys.argv) > 1:
     config_path = sys.argv[1]
     if len(sys.argv) > 2:
       log_dir = sys.argv[2]
+      if len(sys.argv)>3:
+        log_name=sys.argv[3]
   else:
     config_path = r"config/model_training/linux_train_config.json"
     log_dir = r"logs/model_training"
-  main(config_path, log_dir)
+    log_name=None
+  main(config_path, log_dir,log_name)
