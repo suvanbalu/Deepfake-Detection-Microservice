@@ -68,7 +68,7 @@ def parse_log_file(log_file_path):
         ]
 
 # Specify the directory containing the log files
-log_dir = "logs/hyperparameter_tuning-b5-success"
+log_dir = "logs/hyperparameter_tuning-b0-success"
 # Update the log_files list comprehension to include a regex match for the expected file name format
 log_files = [
     os.path.join(log_dir, f) for f in os.listdir(log_dir)
@@ -76,7 +76,7 @@ log_files = [
 ]
 print(log_files)
 # CSV file to write the data
-csv_file = "hyperparameter_results-b5.csv"
+csv_file = "hyperparameter_results-b0.csv"
 
 # Write header to CSV
 with open(csv_file, 'w', newline='') as file:
