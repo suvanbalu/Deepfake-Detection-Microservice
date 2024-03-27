@@ -11,7 +11,7 @@ from mtcnn.mtcnn import MTCNN
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-model = load_model('models\deepfake_detection_models\Deepfake2d.h5')
+model = load_model(r'models/deepfake_detection_models/Deepfake2d.h5')
 
 def extract_frames_rand(video_path, num_frames_to_select):
     capture = cv2.VideoCapture(video_path)
@@ -137,4 +137,5 @@ def detect_deepfake_image():
     return jsonify({"predictionssss": prediction,"probability":str(probability)}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True,host='0.0.0.0', port=port)

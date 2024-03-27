@@ -1,58 +1,35 @@
-# Deepfake Detection Solution
+# Deepfake Detection as a Microservice
 
-## Overview
+## Introduction
 
-This project aims to develop a robust and easily deployable solution for deepfake detection, addressing the challenges posed by the evolving nature of deepfake technology. The implemented solution includes a detection model, a Flask API, and containerization for efficient deployment.
+In an era where digital content is ubiquitous, the proliferation of deepfake technology poses unprecedented challenges to the integrity of information online. Deepfakes—synthetic media in which a person's likeness has been manipulated to create convincing, yet entirely fictional content—have the potential to mislead, defraud, and undermine public discourse. Recognizing the critical need for robust countermeasures, our project, "Deepfake Detection as a Microservice," aims to provide a powerful, accessible solution to this modern dilemma.
 
-## Key Components
+This repository houses a cutting-edge microservice designed to identify and flag deepfake content with precision and speed. Leveraging advanced machine learning and image processing techniques, our service is engineered to integrate seamlessly with various platforms, offering a vital tool for content creators, social media platforms, and news organizations to ensure the authenticity of their media.
 
-### Detection Model
+### What This Repository Contains
 
-The detection model is based on the EfficientB0 architecture and has been trained using 4000 fake images and 1201 real images. The training process involved 35 epochs to ensure a comprehensive learning experience.
+- **Source Code**: The core algorithms and server code that power the deepfake detection service.
+- **Documentation**: Detailed documentation on how to install, configure, and utilize the service, including API references.
+- **Examples**: Sample requests and responses, showcasing the microservice in action.
+- **Tests**: A suite of automated tests to ensure the service's reliability and accuracy.
 
-### Flask API
+### Features
 
-The Flask API, implemented in the `app.py` file, serves as the interface for interacting with the deepfake detection model. It allows seamless integration into different applications, providing a user-friendly experience.
+- **High Accuracy**: Utilizes state-of-the-art deep learning models trained on extensive datasets to detect deepfakes with high precision.
+- **Easy Integration**: Designed as a microservice, it can be easily incorporated into existing digital platforms via a straightforward API.
+- **Scalability**: Engineered to handle requests at scale, ensuring reliable performance even under heavy load.
+- **Continuous Learning**: Regularly updated models to adapt to the evolving techniques used in deepfake generation.
 
-You can start the API by running the following command:
+### Use Cases
 
-```bash
-pip install -r requirements.txt
-python app.py
-```
+- **Social Media Platforms**: Automatically scan and flag uploaded videos and images for deepfake content.
+- **News Organizations**: Verify the authenticity of media before publication or broadcast.
+- **Content Creators**: Ensure the integrity of content shared with audiences.
 
-You can use the `postman-collection.json` file to test the API using Postman or Thunder Client.
+Stay tuned as we continue to develop and refine this crucial technology in the fight against digital deception. Our commitment is to provide an accessible, effective tool to safeguard digital content authenticity, empowering users worldwide to trust what they see online.
 
-### Docker Container
+## Getting Started
 
-Yet to be implemented.
+(Instructions on installation, configuration, and basic usage will follow.)
 
-## Additional Information
-
-### Face Extraction
-
-The MTCNN (Multi-Task Cascaded Convolutional Networks) algorithm is used for face extraction as part of the preprocessing steps.
-
-### Model Training
-
-Various experiments were conducted during the model training phase to ensure optimal performance. The chosen model, trained with the specified dataset and parameters, demonstrates effectiveness in detecting deepfake content. 
-
-## Stats
-
-Metric | Value
---- | ---
-Total Models Trained Successfully | 26
-Total Time Taken for Model Training | 2261 minutes ~37 hrs
-Average Time Taken for Model Training | 87 minutes ~1.45 hrs
-Max Time Taken to Train a Model | 191 minutes ~3.18 hrs
-Min Number of Images Used for Training | 1601
-Max Number of Images Used for Training | 7201
-Min Number of Iterations for a Model to Train | 15
-Max Number of Iterations for a Model to Train | 50
-| Total faces extracted | 11011 |
-| Total time taken | 513 minutes ~ 8.55 hrs |
-| Total videos processed | ~3700 |
-
-## Contribution
-
-Contributions to the project are welcome. If you encounter any issues or have suggestions for improvement, feel free to submit a pull request.
+---

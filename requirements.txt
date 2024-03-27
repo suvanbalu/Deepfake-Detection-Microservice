@@ -1,0 +1,7 @@
+tensorflow==2.15.0
+flask
+flask-cors
+numpy
+opencv-python-headless
+mtcnn
+gunicorn
