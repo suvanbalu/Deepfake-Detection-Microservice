@@ -57,7 +57,7 @@ def run_training(training_script, config, log_dir):
         os.remove(tmpfile_path)
 
 data_directories = list(map(lambda x : os.path.join("dataset",x),os.listdir("dataset")))
-log_dir = "logs/model_training/30epochs-b5" 
+log_dir = "logs/model_training/incremental" 
 training_script = "training/incremental_training.py"  
 
 for data_dir in data_directories:

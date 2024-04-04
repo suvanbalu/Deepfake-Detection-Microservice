@@ -30,6 +30,7 @@ def parse_log_file(log_file_path):
         efficientnet_variant = re.search(r"efficientnet_variant': '(\w+)'", log_content)
         batch_size = re.search(r"'batch_size': (\d+)", log_content)
         reg_lambda = re.search(r"'l2_lambda': (0.\d+)", log_content)
+        learning_rate = re.search(r"'learning_rate': ([\d.]+)", log_content)
         optimizer = re.search(r"'optimizer': '(\w+)'", log_content)
         data_size = re.search(r"Loaded (\d+) images and", log_content)
         data_size_augmented = re.search(r"Size after augmentation: (\d+)", log_content)
@@ -57,6 +58,7 @@ def parse_log_file(log_file_path):
             batch_size.group(1) if batch_size else "N/A",
             reg_lambda.group(1) if reg_lambda else "N/A",
             optimizer.group(1) if optimizer else "N/A",
+            learning_rate.group(1) if learning_rate else "N/A",
             data_size.group(1) if data_size else "N/A",
             data_size_augmented.group(1) if data_size_augmented else "N/A",
             resize.group(1) if resize else "N/A",
@@ -64,11 +66,11 @@ def parse_log_file(log_file_path):
             val_loss.group(1) if val_loss else "N/A",
             train_accuracy.group(1) if train_accuracy else "N/A",
             val_accuracy.group(1) if val_accuracy else "N/A",
-            time_taken
+            time_taken,
         ]
 
 # Specify the directory containing the log files
-log_dir = "logs/hyperparameter_tuning-b7-success"
+log_dir = "logs/hyperparameter_tuning-b4-success"
 # Update the log_files list comprehension to include a regex match for the expected file name format
 log_files = [
     os.path.join(log_dir, f) for f in os.listdir(log_dir)
@@ -76,12 +78,12 @@ log_files = [
 ]
 print(log_files)
 # CSV file to write the data
-csv_file = "hyperparameter_results-b7.csv"
+csv_file = "hyperparameter_results-b4.csv"
 
 # Write header to CSV
 with open(csv_file, 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(["Log_file", "Efficientnet", "Batch Size", "Reg. Lambda", "Optimizer", "Data Size", "Data Size after augmentation", "Resize", "Train Loss", "Test Loss", "Train Accuracy", "Test Accuracy", "Time Taken"])
+    writer.writerow(["Log_file", "Efficientnet", "Batch Size", "Reg. Lambda", "Optimizer", "Learning Rate","Data Size", "Data Size after augmentation", "Resize", "Train Loss", "Test Loss", "Train Accuracy", "Test Accuracy", "Time Taken"])
 
     # Parse each log file and write the data to the CSV
     for log_file in log_files:
