@@ -20,23 +20,23 @@
   "model": {
     "epochs": 30,
     "batch_size": 8,
-    "learning_rate": 0.001,
+    "learning_rate": 0.1,
     "decay": 0.9,
     "optimizer": "sgd",
     "loss": "binary_crossentropy",
     "metrics": ["accuracy"],
     "output_path": "./faces_trained_model.h5",
     "regularization":{
-      "flag":true,
+      "flag":false,
       "type":"l2",
       "l2_lambda":0.001
     }
   },
   "plot": {
     "flag": true,
-    "output_dir": "plots",
+    "output_dir": "plots/final_model",
     "new_folder_flag": true,
     "types": ["loss", "accuracy"],
-    "title": "Incremental Training D13 Results"
+    "title": "Incremental Training D00 Results"
   }
 }

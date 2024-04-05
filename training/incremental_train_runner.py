@@ -25,17 +25,17 @@ def create_config(data_dir):
         "val_split": 0.2,
         "model": {
             "epochs": 30,
-            "batch_size": 32,
-            "learning_rate": 0.01,
+            "batch_size": 8,
+            "learning_rate": 0.1,
             "decay": 0.9,
-            "optimizer": "adam",
+            "optimizer": "sgd",
             "loss": "binary_crossentropy",
             "metrics": ["accuracy"],
             "output_path": "./faces_trained_model.h5"
         },
         "plot": {
             "flag": True,
-            "output_dir": "plots/30epochs-b5",
+            "output_dir": "plots/final_model",
             "new_folder_flag": True,
             "types": ["loss", "accuracy"],
             "title": f"Incremental Training {data_dir} Results"
@@ -57,9 +57,10 @@ def run_training(training_script, config, log_dir):
         os.remove(tmpfile_path)
 
 data_directories = list(map(lambda x : os.path.join("dataset",x),os.listdir("dataset")))
-log_dir = "logs/model_training/incremental" 
+log_dir = "logs/final_training" 
 training_script = "training/incremental_training.py"  
 
 for data_dir in data_directories:
-    config = create_config(data_dir)
-    run_training(training_script, config, log_dir)
+    if "faces00" not in data_dir:
+        config = create_config(data_dir)
+        run_training(training_script, config, log_dir)

@@ -155,6 +155,6 @@ if __name__ == "__main__":
         log_name=sys.argv[3]
   else:
     config_path = r"config/model_training/linux_train_config.json"
-    log_dir = r"logs/model_training"
+    log_dir = r"logs/final_training"
     log_name=None
   main(config_path, log_dir,log_name)

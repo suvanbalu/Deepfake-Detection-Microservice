@@ -91,7 +91,7 @@ def plot_results(history, output_dir, plot_title, plot_types, new_folder_flag, p
     if plot_type in plot_dict:
       try:
         plot_dict[plot_type](history, output_dir, plot_title)
-        logging.info(f"{plot_type} plot saved to {output_dir}")
+        logging.info(f"{plot_type} plot saved to {output_dir}/{plot_type}")
       except Exception as e:  # Catch generic exceptions for plotting issues
         logging.warning(f"Error generating plot {plot_type}: {e}")
     else:
