@@ -35,10 +35,10 @@ def create_config(data_dir):
         },
         "plot": {
             "flag": True,
-            "output_dir": "plots/final_model",
+            "output_dir": "plots/final_training",
             "new_folder_flag": True,
             "types": ["loss", "accuracy"],
-            "title": f"Incremental Training {data_dir} Results"
+            "title": f"Incremental Training {os.path.basename(data_dir)} Results"
         }
     }
 
