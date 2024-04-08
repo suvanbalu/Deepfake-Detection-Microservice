@@ -34,9 +34,9 @@
   },
   "plot": {
     "flag": true,
-    "output_dir": "plots/final_model",
+    "output_dir": "plots/final_training",
     "new_folder_flag": true,
     "types": ["loss", "accuracy"],
-    "title": "Incremental Training D00 Results"
+    "title": "Incremental Training faces00 Results"
   }
 }
