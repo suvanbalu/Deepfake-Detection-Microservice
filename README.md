@@ -30,6 +30,27 @@ Stay tuned as we continue to develop and refine this crucial technology in the f
 
 ## Getting Started
 
-(Instructions on installation, configuration, and basic usage will follow.)
+1. Running on Docker
+- Clone the repository
+- Download Docker Desktop
+- Run the following command in the root directory of the repository:
+```bash
+docker build -t deepfake-detection .
+docker run -p 5000:5000 deepfake-detection
+```
+- The service will be accessible at `http://localhost:5000`
 
----
+2. Running Locally
+- Clone the repository
+- Install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
+- Run the flask server from the root directory of the repository:
+```bash
+python app.py
+```
+- The service will be accessible at `http://localhost:5000`
+
+## Contributors
+
