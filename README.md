@@ -33,6 +33,7 @@ Stay tuned as we continue to develop and refine this crucial technology in the f
 1. Running on Docker
 - Clone the repository
 - Download Docker Desktop
+- The final model is available for download [here](https://drive.google.com/file/d/1IPYlxYqiQ92cgLi7DAdkQUkfecjd8jX6/view?usp=sharing). Please place the downloaded model in the path `models/deepfake_detection_models/faces_trained_model.h5` to ensure the server runs correctly.
 - Run the following command in the root directory of the repository:
 ```bash
 docker build -t deepfake-detection .
