@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "deepfake_detection",
-    "dateExported": "2024-04-08T14:02:45.539Z",
+    "dateExported": "2024-04-12T05:01:59.806Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,7 +14,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-27T14:26:14.871Z",
-            "modified": "2024-04-08T13:21:47.756Z",
+            "modified": "2024-04-12T04:39:31.418Z",
             "headers": [],
             "params": [],
             "body": {
@@ -33,7 +33,7 @@
                 "files": [
                     {
                         "name": "image",
-                        "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake1.png"
+                        "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake4.png"
                     }
                 ]
             },
@@ -78,7 +78,7 @@
             "method": "POST",
             "sortNum": 15000,
             "created": "2024-03-01T13:46:44.367Z",
-            "modified": "2024-04-08T13:22:04.047Z",
+            "modified": "2024-04-12T04:38:41.023Z",
             "headers": [],
             "params": [],
             "body": {
@@ -91,7 +91,7 @@
                     },
                     {
                         "name": "face_detection_method",
-                        "value": "MTCNN"
+                        "value": "SSD"
                     }
                 ],
                 "files": [
@@ -112,7 +112,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-03-01T13:28:29.177Z",
-            "modified": "2024-04-08T14:00:15.550Z",
+            "modified": "2024-04-12T04:19:45.299Z",
             "headers": [],
             "params": [],
             "body": {
@@ -121,8 +121,7 @@
                 "form": [
                     {
                         "name": "face_detection_method",
-                        "value": "SSD",
-                        "isDisabled": true
+                        "value": "SSD"
                     }
                 ],
                 "files": [
@@ -143,7 +142,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-03-01T13:46:46.188Z",
-            "modified": "2024-04-08T14:01:44.643Z",
+            "modified": "2024-04-12T05:01:37.380Z",
             "headers": [],
             "params": [],
             "body": {
@@ -153,6 +152,10 @@
                     {
                         "name": "num_frames",
                         "value": "5"
+                    },
+                    {
+                        "name": "face_detection_method",
+                        "value": "SSD"
                     }
                 ],
                 "files": [
