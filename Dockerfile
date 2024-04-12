@@ -18,10 +18,7 @@ COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
-
-# Define environment variable
-ENV PORT=5000
-
+EXPOSE 8080
+ENV PORT=8080
 # Run app.py when the container launches using Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app

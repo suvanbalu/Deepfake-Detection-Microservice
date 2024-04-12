@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "deepfake_detection",
-    "dateExported": "2024-04-12T05:01:59.806Z",
+    "dateExported": "2024-04-12T06:29:14.729Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -10,11 +10,45 @@
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
             "name": "detect_photo",
-            "url": "http://127.0.0.1:5000/detect_deepfake_image",
+            "url": "https://deepfake-detection-jjafnsrcga-el.a.run.app/detect_deepfake_image",
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-27T14:26:14.871Z",
-            "modified": "2024-04-12T04:39:31.418Z",
+            "modified": "2024-04-12T06:03:56.412Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "face_detection",
+                        "value": "1"
+                    },
+                    {
+                        "name": "face_detection_method",
+                        "value": "MTCNN"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "image",
+                        "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake4.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "2c71db00-383d-4e1e-b154-7e939fd28937",
+            "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
+            "containerId": "",
+            "name": "detect_photo Copy",
+            "url": "http://127.0.0.1:5000/detect_deepfake_image",
+            "method": "POST",
+            "sortNum": 11250,
+            "created": "2024-04-12T06:03:27.873Z",
+            "modified": "2024-04-12T06:03:27.873Z",
             "headers": [],
             "params": [],
             "body": {
@@ -44,11 +78,43 @@
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
             "name": "Hello",
-            "url": "http://127.0.0.1:5000/",
+            "url": "https://deepfake-detection-jjafnsrcga-el.a.run.app",
             "method": "GET",
             "sortNum": 12500,
             "created": "2024-03-27T16:28:35.151Z",
-            "modified": "2024-03-27T16:28:47.931Z",
+            "modified": "2024-04-12T06:03:05.360Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "face_detection",
+                        "value": "1",
+                        "isDisabled": true
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "image",
+                        "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake1.png",
+                        "isDisabled": true
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "bdf570ac-6a16-4656-a779-315d948f8b87",
+            "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
+            "containerId": "",
+            "name": "Hello Copy",
+            "url": "http://127.0.0.1:5000/",
+            "method": "GET",
+            "sortNum": 13750,
+            "created": "2024-04-12T06:02:14.635Z",
+            "modified": "2024-04-12T06:02:14.635Z",
             "headers": [],
             "params": [],
             "body": {
@@ -74,11 +140,11 @@
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
             "name": "detect_photo Copy",
-            "url": "http://127.0.0.1:5000/detect_deepfake_image",
+            "url": "https://deepfake-detection-jjafnsrcga-el.a.run.app/detect_deepfake_image",
             "method": "POST",
             "sortNum": 15000,
             "created": "2024-03-01T13:46:44.367Z",
-            "modified": "2024-04-12T04:38:41.023Z",
+            "modified": "2024-04-12T06:04:18.057Z",
             "headers": [],
             "params": [],
             "body": {
@@ -98,6 +164,40 @@
                     {
                         "name": "image",
                         "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\real1.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "93ebf458-e43f-42e4-ae6d-347e9ca95867",
+            "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
+            "containerId": "",
+            "name": "detect_photo Copy Copy",
+            "url": "http://127.0.0.1:8080/detect_deepfake_image",
+            "method": "POST",
+            "sortNum": 17500,
+            "created": "2024-04-12T06:04:05.459Z",
+            "modified": "2024-04-12T06:26:28.264Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "face_detection",
+                        "value": "1"
+                    },
+                    {
+                        "name": "face_detection_method",
+                        "value": "SSD"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "image",
+                        "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake1.png"
                     }
                 ]
             },
@@ -138,11 +238,11 @@
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
             "name": "detect_video Copy",
-            "url": "http://127.0.0.1:5000/detect_deepfake_video",
+            "url": "http://127.0.0.1:8080/detect_deepfake_video",
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-03-01T13:46:46.188Z",
-            "modified": "2024-04-12T05:01:37.380Z",
+            "modified": "2024-04-12T06:28:45.799Z",
             "headers": [],
             "params": [],
             "body": {
