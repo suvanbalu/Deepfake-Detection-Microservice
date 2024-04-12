@@ -6,28 +6,6 @@ In an era where digital content is ubiquitous, the proliferation of deepfake tec
 
 This repository houses a cutting-edge microservice designed to identify and flag deepfake content with precision and speed. Leveraging advanced machine learning and image processing techniques, our service is engineered to integrate seamlessly with various platforms, offering a vital tool for content creators, social media platforms, and news organizations to ensure the authenticity of their media.
 
-### What This Repository Contains
-
-- **Source Code**: The core algorithms and server code that power the deepfake detection service.
-- **Documentation**: Detailed documentation on how to install, configure, and utilize the service, including API references.
-- **Examples**: Sample requests and responses, showcasing the microservice in action.
-- **Tests**: A suite of automated tests to ensure the service's reliability and accuracy.
-
-### Features
-
-- **High Accuracy**: Utilizes state-of-the-art deep learning models trained on extensive datasets to detect deepfakes with high precision.
-- **Easy Integration**: Designed as a microservice, it can be easily incorporated into existing digital platforms via a straightforward API.
-- **Scalability**: Engineered to handle requests at scale, ensuring reliable performance even under heavy load.
-- **Continuous Learning**: Regularly updated models to adapt to the evolving techniques used in deepfake generation.
-
-### Use Cases
-
-- **Social Media Platforms**: Automatically scan and flag uploaded videos and images for deepfake content.
-- **News Organizations**: Verify the authenticity of media before publication or broadcast.
-- **Content Creators**: Ensure the integrity of content shared with audiences.
-
-Stay tuned as we continue to develop and refine this crucial technology in the fight against digital deception. Our commitment is to provide an accessible, effective tool to safeguard digital content authenticity, empowering users worldwide to trust what they see online.
-
 ## Getting Started
 
 1. Running on Docker
@@ -37,7 +15,7 @@ Stay tuned as we continue to develop and refine this crucial technology in the f
 - Run the following command in the root directory of the repository:
 ```bash
 docker build -t deepfake-detection .
-docker run -p 5000:5000 deepfake-detection
+docker run -p 5000:8080 deepfake-detection
 ```
 - The service will be accessible at `http://localhost:5000`
 
@@ -51,7 +29,64 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
-- The service will be accessible at `http://localhost:5000`
+- The service will be accessible at `http://localhost:8080`
 
-## Contributors
+## Results
+Our model was evaluated on the test dataset using two approaches:
 
+1. **Balanced Fake-to-Real Ratio (1.5:1)**
+   - **Accuracy:** 86.38%
+   - **Precision:** 84.75%
+   - **Recall:** 94.27%
+   - **True Negative Rate:** 74.56%
+
+2. **Whole Test Dataset**
+   - **Accuracy:** 90.87%
+   - **Precision:** 95.40%
+   - **Recall:** 93.76%
+   - **True Negative Rate:** 74.56%
+
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/suvanbalu/Deepfake-Detection-Microservice/blob/main/test/real1.png" alt="Real Image" width="400"/>
+    </td>
+    <td>
+      <img src="https://github.com/suvanbalu/Deepfake-Detection-Microservice/blob/main/test/fake1.png" alt="Fake Image" width="400"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Real Image Results:</b>
+      <pre>
+{
+  "face_detection_method": "SSD",
+  "predictions": [
+    {
+      "prediction": "Real",
+      "probability": 0.9765076637268066
+    }
+  ]
+}
+      </pre>
+    </td>
+    <td>
+      <b>Fake Image Results:</b>
+      <pre>
+{
+  "face_detection_method": "SSD",
+  "predictions": [
+    {
+      "prediction": "Fake",
+      "probability": 0.6263623237609863
+    }
+  ]
+}
+      </pre>
+    </td>
+  </tr>
+</table>
+
+These results validate the model's effectiveness in accurately detecting deepfake content under varied test conditions.
+
+## Future Works
