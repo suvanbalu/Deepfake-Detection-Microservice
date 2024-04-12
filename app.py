@@ -151,7 +151,7 @@ def detect_deepfake_video():
     predictions = predict_from_video(video_path, num_frames=num_frames, face_detection_method=face_detection_method)
 
     os.remove(video_path)
-    return jsonify(predictions), 200
+    return jsonify({"predictions":predictions,"face_detection_method":face_detection_method,"num_frames":num_frames}), 200
 
 @app.route('/detect_deepfake_image', methods=['POST'])
 def detect_deepfake_image():
@@ -168,7 +168,7 @@ def detect_deepfake_image():
     predictions = predict_from_image(image_path, face_detection, face_detection_method)
 
     os.remove(image_path)
-    return jsonify({"Predictions":predictions,"face_detection_method":face_detection_method}), 200
+    return jsonify({"predictions":predictions,"face_detection_method":face_detection_method}), 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
