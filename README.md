@@ -34,18 +34,12 @@ python app.py
 ## Results
 Our model was evaluated on the test dataset using two approaches:
 
-1. **Balanced Fake-to-Real Ratio (1.5:1)**
-   - **Accuracy:** 86.38%
-   - **Precision:** 84.75%
-   - **Recall:** 94.27%
-   - **True Negative Rate:** 74.56%
+| Approach                        | Accuracy | Precision | Recall | True Negative Rate |
+|---------------------------------|----------|-----------|--------|--------------------|
+| Balanced Fake-to-Real Ratio (1.5:1) | 86.38%   | 84.75%    | 94.27% | 74.56%             |
+| Whole Test Dataset              | 90.87%   | 95.40%    | 93.76% | 74.56%             |
 
-2. **Whole Test Dataset**
-   - **Accuracy:** 90.87%
-   - **Precision:** 95.40%
-   - **Recall:** 93.76%
-   - **True Negative Rate:** 74.56%
-
+### Sample Output
 <table>
   <tr>
     <td>
