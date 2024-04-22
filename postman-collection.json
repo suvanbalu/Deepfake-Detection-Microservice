@@ -1,8 +1,9 @@
 {
-    "client": "Thunder Client",
+    "clientName": "Thunder Client",
     "collectionName": "deepfake_detection",
-    "dateExported": "2024-04-12T06:29:14.729Z",
-    "version": "1.1",
+    "collectionId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
+    "dateExported": "2024-04-22T05:04:40.981Z",
+    "version": "1.2",
     "folders": [],
     "requests": [
         {
@@ -14,7 +15,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-27T14:26:14.871Z",
-            "modified": "2024-04-12T06:03:56.412Z",
+            "modified": "2024-04-12T06:31:54.060Z",
             "headers": [],
             "params": [],
             "body": {
@@ -27,13 +28,13 @@
                     },
                     {
                         "name": "face_detection_method",
-                        "value": "MTCNN"
+                        "value": "SSD"
                     }
                 ],
                 "files": [
                     {
                         "name": "image",
-                        "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake4.png"
+                        "value": "e:\\8th sem\\code\\test\\real2.png"
                     }
                 ]
             },
@@ -43,12 +44,12 @@
             "_id": "2c71db00-383d-4e1e-b154-7e939fd28937",
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
-            "name": "detect_photo Copy",
-            "url": "http://127.0.0.1:5000/detect_deepfake_image",
+            "name": "detect_photo Container",
+            "url": "http://127.0.0.1:8080/detect_deepfake_image",
             "method": "POST",
             "sortNum": 11250,
             "created": "2024-04-12T06:03:27.873Z",
-            "modified": "2024-04-12T06:03:27.873Z",
+            "modified": "2024-04-15T12:38:05.456Z",
             "headers": [],
             "params": [],
             "body": {
@@ -109,14 +110,13 @@
             "_id": "bdf570ac-6a16-4656-a779-315d948f8b87",
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
-            "name": "Hello Copy",
+            "name": "Hello Container",
             "url": "http://127.0.0.1:5000/",
             "method": "GET",
             "sortNum": 13750,
             "created": "2024-04-12T06:02:14.635Z",
-            "modified": "2024-04-12T06:02:14.635Z",
+            "modified": "2024-04-22T04:59:34.150Z",
             "headers": [],
-            "params": [],
             "body": {
                 "type": "formdata",
                 "raw": "",
@@ -132,14 +132,13 @@
                         "value": "e:\\8th sem\\code\\Deepfake-Detection-Microservice\\test\\fake1.png"
                     }
                 ]
-            },
-            "tests": []
+            }
         },
         {
             "_id": "8a951926-bd5d-4241-a6d7-a796e5481ffa",
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
-            "name": "detect_photo Copy",
+            "name": "detect_photo 2",
             "url": "https://deepfake-detection-jjafnsrcga-el.a.run.app/detect_deepfake_image",
             "method": "POST",
             "sortNum": 15000,
@@ -173,7 +172,7 @@
             "_id": "93ebf458-e43f-42e4-ae6d-347e9ca95867",
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
-            "name": "detect_photo Copy Copy",
+            "name": "detect_photo 2 flask",
             "url": "http://127.0.0.1:8080/detect_deepfake_image",
             "method": "POST",
             "sortNum": 17500,
@@ -207,12 +206,12 @@
             "_id": "1502dca0-cd2e-4636-9c58-6734ee19c805",
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
-            "name": "detect_video",
-            "url": "http://127.0.0.1:5000/detect_deepfake_video",
+            "name": "detect_video container",
+            "url": "http://127.0.0.1:8080/detect_deepfake_video",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-03-01T13:28:29.177Z",
-            "modified": "2024-04-12T04:19:45.299Z",
+            "modified": "2024-04-15T12:40:36.303Z",
             "headers": [],
             "params": [],
             "body": {
@@ -234,17 +233,44 @@
             "tests": []
         },
         {
+            "_id": "d54a715c-7225-4254-b034-0eb8d79d6757",
+            "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
+            "containerId": "",
+            "name": "detect_video ",
+            "url": "https://deepfake-detection-jjafnsrcga-el.a.run.app/detect_deepfake_video",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2024-04-22T05:03:25.953Z",
+            "modified": "2024-04-22T05:04:26.470Z",
+            "headers": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "face_detection_method",
+                        "value": "SSD"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "video",
+                        "value": "e:\\8th sem\\code\\dataset0\\awnfpubqmo.mp4"
+                    }
+                ]
+            }
+        },
+        {
             "_id": "a2885902-4e03-4858-b608-899aca64372d",
             "colId": "ab82bd06-7f02-4df0-89c4-c65bcacac602",
             "containerId": "",
-            "name": "detect_video Copy",
+            "name": "detect_video flask",
             "url": "http://127.0.0.1:8080/detect_deepfake_video",
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-03-01T13:46:46.188Z",
-            "modified": "2024-04-12T06:28:45.799Z",
+            "modified": "2024-04-22T05:04:23.948Z",
             "headers": [],
-            "params": [],
             "body": {
                 "type": "formdata",
                 "raw": "",
@@ -264,8 +290,8 @@
                         "value": "e:\\8th sem\\code\\dataset0\\doniqevxeg.mp4"
                     }
                 ]
-            },
-            "tests": []
+            }
         }
-    ]
+    ],
+    "ref": "coKSV4l1u2eflvsizlW41TQIQVHhxJo-aFaGSILO78EZqqcWhOspKTpdxuVM0qBPJKta2lFWa15vqzaJx1mzNg"
 }
