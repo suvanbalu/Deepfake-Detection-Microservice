@@ -36,8 +36,8 @@ Our model was evaluated on the test dataset using two approaches:
 
 | Approach                        | Accuracy | Precision | Recall | True Negative Rate |
 |---------------------------------|----------|-----------|--------|--------------------|
-| Balanced Fake-to-Real Ratio (1.5:1) | 86.38%   | 84.75%    | 94.27% | 74.56%             |
-| Whole Test Dataset              | 90.87%   | 95.40%    | 93.76% | 74.56%             |
+| Balanced Fake-to-Real Ratio (1.5:1) | 80.82%   | 80.97%    | 88.93% | 68.66%             |
+| Whole Test Dataset              | 83.71%   | 94.03%    | 86.34% | 68.66%             |
 
 ### Sample Output
 <table>
