@@ -16,9 +16,21 @@ test_dir = './test_dataset'  # Adjust the path as necessary
 images = []
 labels = []
 
+# Count the number of REAL images
+real_path = os.path.join(test_dir, "REAL")
+num_real_images = len(os.listdir(real_path))
+# Calculate the limit for FAKE images
+num_fake_limit = int(10 * num_real_images)
+
 for idx, label in enumerate(["REAL", "FAKE"]):
     test_path = os.path.join(test_dir, label)
-    for img_path in list(map(lambda x: os.path.join(test_path, x), os.listdir(test_path))):
+    image_paths = os.listdir(test_path)
+    
+    # If processing FAKE images, limit the number of images processed
+    if label == "FAKE":
+        image_paths = image_paths[:num_fake_limit]
+    
+    for img_path in map(lambda x: os.path.join(test_path, x), image_paths):
         img = cv2.imread(img_path)
         img = cv2.resize(img, (224, 224))  # Resize to match model input, adjust as necessary
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert color from BGR to RGB
