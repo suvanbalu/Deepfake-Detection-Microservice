@@ -1,70 +1,3 @@
-# import numpy as np
-# import tensorflow as tf
-# from tensorflow.keras import layers, Model
-# import matplotlib.pyplot as plt
-# import sys
-# from tensorflow.keras.preprocessing import image
-# from tensorflow.keras.applications.efficientnet import preprocess_input
-# import os
-
-# def load_preprocess_image(img_path):
-#     img = image.load_img(img_path, target_size=(224, 224))
-#     img_array = image.img_to_array(img)
-#     img_array_expanded = np.expand_dims(img_array, axis=0)
-#     return preprocess_input(img_array_expanded)
-
-# def build_intermediate_model(base_model):
-#     layer_outputs = [layer.output for layer in base_model.layers]
-#     return Model(inputs=base_model.input, outputs=layer_outputs)
-# def build_model():
-#     # Load the base model
-#     # base_model = tf.keras.applications.EfficientNetB0(include_top=False, weights='imagenet', input_shape=(224, 224, 3))
-#     # base_model.trainable = False
-    
-#     # Note: It's crucial to start from an Input layer for the Sequential model
-#     inputs = tf.keras.Input(shape=(224, 224, 3))
-#     # x = base_model(inputs, training=False)  # Ensure base model is in inference mode
-#     x = layers.Conv2D(32, 3, activation='relu')(inputs)
-#     x = layers.GlobalAveragePooling2D()(x)
-#     x = layers.Dense(128, activation='relu')(x)
-#     x = layers.Dropout(0.5)(x)
-#     outputs = layers.Dense(1, activation='sigmoid')(x)
-    
-#     model = tf.keras.Model(inputs, outputs)
-#     return model
-# def visualize_layer_outputs(intermediate_model, input_data, output_dir='layer_outputs'):
-#     intermediate_outputs = intermediate_model.predict(input_data)
-#     if not os.path.exists(output_dir):
-#         os.makedirs(output_dir)
-
-#     for i, output in enumerate(intermediate_outputs):
-#         if len(output.shape) == 4:
-#             # This is a feature map from a convolutional layer
-#             num_channels = output.shape[-1]
-#             for channel in range(num_channels):
-#                 channel_output = output[0, :, :, channel]
-#                 plt.imshow(channel_output, cmap='viridis')
-#                 plt.savefig(f"{output_dir}/layer_{i}_channel_{channel}.png")
-#                 plt.close()
-#         else:
-#             # For layers outputting 2D data or less, like Dense layers
-#             plt.plot(output[0, :], marker='o')
-#             plt.title(f"Layer {i} Output")
-#             plt.savefig(f"{output_dir}/layer_{i}_output.png")
-#             plt.close()
-
-# if __name__ == "__main__":
-#     if len(sys.argv) != 2:
-#         img_path = r"test\fake4_mtcnn.png"
-#     else:
-#       img_path = sys.argv[1]
-#     input_data = load_preprocess_image(img_path)
-
-#     # Adjust the model as per your requirement
-#     model = build_model()
-#     intermediate_model = build_intermediate_model(model)
-#     visualize_layer_outputs(intermediate_model, input_data)
-    
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, Model
@@ -94,6 +27,7 @@ def build_model():
     outputs = layers.Dense(1, activation='sigmoid')(x)
     
     model = Model(inputs=inputs, outputs=outputs)
+    print(model.summary())
     return model
 
 def build_intermediate_model(model):
@@ -161,5 +95,3 @@ if __name__ == "__main__":
     base_model = tf.keras.applications.EfficientNetB0(include_top=False, input_tensor=tf.keras.Input(shape=(224, 224, 3)), weights='imagenet')
     len_base = len(base_model.layers)
     visualize_selected_layers(intermediate_model,input_data,len_base)
-    
-  

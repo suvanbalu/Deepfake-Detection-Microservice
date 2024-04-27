@@ -11,3 +11,5 @@ plots
 test_dataset
 models
 temp
+selected_layer_outputs
+evaluation_plots
